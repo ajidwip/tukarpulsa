@@ -1,0 +1,7 @@
+{
+  "name": "tukarpulsa",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
