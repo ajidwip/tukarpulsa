@@ -1,14 +1,117 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar color="bluewhite">
+    <button ion-button color="light" clear style="position: absolute;right:0px;top:5px;z-index: 999;" (click)="on()">
+      <ion-icon name="md-more" style="font-size:30px;"></ion-icon>
+    </button>
     <ion-title>
-      Ionic Blank
+      Tukar Pulsa
     </ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content style="background: #f5f5f5;">
+  <ion-segment [(ngModel)]="menu">
+    <ion-segment-button value="ptop">
+      Tukar Pulsa
+    </ion-segment-button>
+    <ion-segment-button value="ptom">
+      Jual Pulsa
+    </ion-segment-button>
+    <ion-segment-button value="mtop">
+      Beli Pulsa
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="menu">
+    <div *ngSwitchCase="'ptop'">
+
+    </div>
+    <div *ngSwitchCase="'ptom'">
+      <ion-label style="font-weight: bold;padding-left:10px;">Nomor Handphone</ion-label>
+      <ion-row style="background: #fff;border-bottom:1px solid;border-color:#dedede;" padding>
+        <ion-col col-3 style="text-align: center;font-size: 12px;">
+          <div style="color:#dedede;">Kode Negara</div>+62
+        </ion-col>
+        <ion-col col-7>
+          <ion-input id="nohpkey" type="tel" maxlength="13" placeholder="No. handphone" [(ngModel)]="nohp" style="border-bottom:1px solid;border-color:#c00808;"
+            (ionChange)="doGetLength()">
+          </ion-input>
+          <ion-label id="length" style="text-align: right;font-size: 10px;color:#c00808;">{{nohp.length}} / 8 - 13</ion-label>
+          <button padding ion-button clear style="position: absolute;right:0px;top:5px;color:#7c7c7c;" (click)="doDeleteNoHP()">
+            <ion-icon name="md-close-circle"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-2>
+          <img style="padding-top:15px;width:35px;" src="{{imgopt}}">
+        </ion-col>
+        <ion-col col-3 style="text-align: center;font-size: 12px;" *ngIf="rate != ''">
+          <div style="color:#dedede;">Nominal</div>Rp.
+        </ion-col>
+        <ion-col col-7 *ngIf="rate != ''">
+          <ion-input id="nominal" type="number" [disabled]="rate == ''" placeholder="Nominal" [(ngModel)]="nominal" style="border-bottom:1px solid;border-color:#c00808;"
+            (ionChange)="doGetLengthNominal()">
+          </ion-input>
+          <ion-label id="lengthnominal" style="text-align: right;font-size: 10px;color:#c00808;">{{rupiah}} / 50.000 - 1.000.000</ion-label>
+          <button [disabled]="rate == ''" padding ion-button clear style="position: absolute;right:0px;top:5px;color:#7c7c7c;" (click)="doDeleteNominal()">
+            <ion-icon name="md-close-circle"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-2 *ngIf="rate != ''"></ion-col>
+        <ion-col col-12 style="text-align: center;font-weight: bold;" *ngIf="rate != ''">{{rate}} %</ion-col>
+        <ion-col col-3 style="text-align: center;font-size: 12px;" *ngIf="rate != ''">
+          <div style="color:#dedede;">Diterima</div>Rp.
+        </ion-col>
+        <ion-col col-7 *ngIf="rate != ''">
+          <ion-input id="nominalterima" (ionChange)="doChangeNominalterima()" disabled type="number" placeholder="Nominal Diterima"
+            [(ngModel)]="nominalterima" style="border-bottom:1px solid;border-color:#092e61;font-weight: bold;font-size: 30px;">
+          </ion-input>
+          <ion-label id="lengthnominalterima" style="text-align: right;font-size: 20px;color:#092e61;">{{rupiahterima}}</ion-label>
+        </ion-col>
+        <ion-col col-2 *ngIf="rate != ''"></ion-col>
+      </ion-row>
+      <ion-row style="padding:30px;" *ngIf="rate == ''">
+        <ion-col col-4 style="text-align: center;">
+          <img style="width:85px;margin:auto;filter: grayscale(100%);" src="assets/imgs/telkomsel.png">
+        </ion-col>
+        <ion-col col-4 style="text-align: center;">
+          <img style="width:85px;margin:auto;filter: grayscale(100%);" src="assets/imgs/indosat.png">
+        </ion-col>
+        <ion-col col-4 style="text-align: center;">
+          <img style="width:70px;margin:auto;filter: grayscale(100%);" src="assets/imgs/axis.png">
+        </ion-col>
+        <ion-col col-6 style="text-align: center;">
+          <img style="width:30px;margin:auto;filter: grayscale(100%);" src="assets/imgs/3.png">
+        </ion-col>
+        <ion-col col-6 style="text-align: center;">
+          <img style="width:45px;margin:auto;filter: grayscale(100%);" src="assets/imgs/xl.png">
+        </ion-col>
+      </ion-row>
+      <div style="padding-top:10px;padding-left:20px;padding-right:20px;">
+        <ion-item style="border-radius:2px;border:1px solid;border-color:#0076c5;" text-wrap>
+          <ion-thumbnail item-start style="margin:0px;">
+            <ion-icon name="md-alert" style="color:#092e61;font-size: 30px;" padding></ion-icon>
+          </ion-thumbnail>
+          <p>Mohon pastikan nomor handphone Anda sudah terisi dengan benar untuk mempermudah verifikasi.</p>
+        </ion-item>
+      </div>
+      <ion-buttons padding>
+        <button ion-button full block color="oren" (click)="doInsertTr()">Lanjutkan</button>
+      </ion-buttons>
+    </div>
+    <div *ngSwitchCase="'mtop'">
+
+    </div>
+  </div>
 </ion-content>
+<div class="overlay" id="overlay">
+  <div class="menu">
+    <ion-row style="border-bottom:1px solid;border-color:#dedede;">
+      <ion-col col-6 style="text-align: left;" padding>V1.0.0</ion-col>
+      <ion-col col-6 (click)="off()" style="text-align:right;" padding>TUTUP</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 style="text-align: center;" padding>RATE JUAL</ion-col>
+      <ion-col col-12 style="text-align: center;" padding>INFO</ion-col>
+      <ion-col col-12 style="text-align: center;" padding>PENGATURAN</ion-col>
+    </ion-row>
+  </div>
+</div>

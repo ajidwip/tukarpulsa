@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-navbar color="bluewhite">
+    <button ion-button color="light" clear style="position: absolute;right:0px;top:5px;z-index: 999;" (click)="on()">
+      <ion-icon name="md-more" style="font-size:30px;"></ion-icon>
+    </button>
+    <ion-title>
+      <div>Review dan Cara Bayar</div>
+      <div style="font-size: 12px;">No. Transaksi {{id}}</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #efefef;">
+  <ion-grid padding style="background: #fff;border-bottom:1px solid;border-color:#dedede;">
+    <ion-row style="background: #fff;">
+      <ion-col col-12 style="font-size:14px;font-weight: bold;border-bottom:1px solid;border-color:#dedede;">Detail Pesanan</ion-col>
+    </ion-row>
+    <ion-row style="background: #fff;">
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nomor</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">+62{{nomortelp}}</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Operator</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{operator}}</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Rate</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{rate}}</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nominal Convert</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{nominaljual}}</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nominal Transfer</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{nominaltrf}}</ion-col>
+    </ion-row>
+    <ion-row style="background: #fff;">
+      <ion-col col-12 style="font-size:14px;font-weight: bold;border-bottom:1px solid;border-color:#dedede;">Detail Pembayaran</ion-col>
+    </ion-row>
+    <ion-row style="background: #fff;">
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nama Bank</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{namabank}}</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nama Rekening</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{namarekening}}</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nomor Rekening</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{nomorrekening}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid padding style="background: #fff;border-bottom:1px solid;border-color:#dedede;margin-top:5px;">
+    <ion-row style="background: #fff;">
+      <ion-col col-12 style="font-size:14px;font-weight: bold;border-bottom:1px solid;border-color:#dedede;">Selesaikan Transaksi Sebelum</ion-col>
+    </ion-row>
+    <ion-row style="background: #fff;padding-top:10px;">
+      <ion-col col-2 style="text-align: center;">
+        <i style="font-size:30px;" class="far fa-clock"></i>
+      </ion-col>
+      <ion-col col-10 style="text-align: left;font-size: 12px;margin-top:8px;">Selesaikan transaksi Anda dalam <a style="color:#000;font-weight: bold;">30 menit</a></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid padding style="background: #fff;border-bottom:1px solid;border-color:#dedede;margin-top:5px;">
+    <ion-row style="background: #fff;">
+      <ion-col col-12 style="font-size:14px;font-weight: bold;border-bottom:1px solid;border-color:#dedede;">Mohon Transfer Ke</ion-col>
+    </ion-row>
+    <ion-row style="background: #fff;">
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Operator</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">Telkomsel</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nomor Handphone</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-4 style="text-align: left;font-size: 12px;">081314435493</ion-col>
+      <ion-col col-2 style="text-align: right;font-size: 12px;color:#03439c;font-weight: bold;" (click)="doCopy()">SALIN</ion-col>
+      <ion-col col-5 style="text-align: left;font-size: 12px;">Nominal</ion-col>
+      <ion-col col-0.5 style="text-align: right;font-size: 12px;">:</ion-col>
+      <ion-col col-6 style="text-align: left;font-size: 12px;">{{nominaljual}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row style="padding-left:10px;padding-right:10px;padding-top:5px;">
+      <ion-col col-12 style="font-size:14px;font-weight: bold;">Cara Bayar</ion-col>
+    </ion-row>
+    <ion-card padding *ngFor="let carabayar of listcarabayar">
+      <ion-row style="background: #fff;border-radius: 4px;padding-bottom:10px;">
+        <ion-col col-1>
+          <img style="width: 30px;" src="{{imgopt}}">
+        </ion-col>
+        <ion-col col-10 style="font-weight: bold;padding-left:10px;">
+          {{carabayar.title}}
+        </ion-col>
+        <ion-col col-1 style="text-align: right;">
+          <i *ngIf="carabayartemp != carabayar.title" (click)="doDetailCaraBayar(carabayar)" style="color:#579af7;font-size: 20px;"
+            class="fas fa-angle-down"></i>
+          <i *ngIf="carabayartemp == carabayar.title" (click)="doHideDetailCaraBayar(carabayar)" style="color:#579af7;font-size: 20px;"
+            class="fas fa-angle-up"></i>
+        </ion-col>
+      </ion-row>
+      <div *ngFor="let carabayardetail of listcarabayardetail">
+        <ion-row *ngIf="carabayar.id == carabayardetail.id_header">
+          <ion-col col-1>{{carabayardetail.line_no}}.</ion-col>
+          <ion-col col-11 style="text-align: left;">{{carabayardetail.description}}</ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+  </ion-grid>
+</ion-content>
+<div class="overlay" id="overlay">
+  <div class="menu">
+    <ion-row style="border-bottom:1px solid;border-color:#dedede;">
+      <ion-col col-6 style="text-align: left;" padding>V1.0.0</ion-col>
+      <ion-col col-6 (click)="off()" style="text-align:right;" padding>TUTUP</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 style="text-align: center;" padding>RATE JUAL</ion-col>
+      <ion-col col-12 style="text-align: center;" padding>INFO</ion-col>
+      <ion-col col-12 style="text-align: center;" padding>PENGATURAN</ion-col>
+    </ion-row>
+  </div>
+</div>
